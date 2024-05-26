@@ -1,7 +1,8 @@
 import { Container } from '@pixi/display';
 import { TextStyle, Text } from '@pixi/text';
 import { Graphics } from '@pixi/graphics';
-import { InteractionEvent } from '@pixi/interaction';
+import '@pixi/interaction';
+import '@pixi/events';
 
 interface PixiButtonProps {
   x: number;

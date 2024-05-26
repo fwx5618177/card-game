@@ -24,6 +24,9 @@ importers:
       '@pixi/display':
         specifier: ^7.4.2
         version: 7.4.2(@pixi/core@7.4.2)
+      '@pixi/events':
+        specifier: ^7.4.2
+        version: 7.4.2(@pixi/core@7.4.2)(@pixi/display@7.4.2(@pixi/core@7.4.2))
       '@pixi/graphics':
         specifier: ^7.4.2
         version: 7.4.2(@pixi/core@7.4.2)(@pixi/display@7.4.2(@pixi/core@7.4.2))(@pixi/sprite@7.4.2(@pixi/core@7.4.2)(@pixi/display@7.4.2(@pixi/core@7.4.2)))
@@ -332,6 +335,12 @@ packages:
     resolution: {integrity: sha512-DaD0J7gIlNlzO0Fdlby/0OH+tB5LtCY6rgFeCBKVDnzmn8wKW3zYZRenWBSFJ0Psx6vLqXYkSIM/rcokaKviIw==}
     peerDependencies:
       '@pixi/core': 7.4.2
+
+  '@pixi/events@7.4.2':
+    resolution: {integrity: sha512-Jw/w57heZjzZShIXL0bxOvKB+XgGIevyezhGtfF2ZSzQoSBWo+Fj1uE0QwKd0RIaXegZw/DhSmiMJSbNmcjifA==}
+    peerDependencies:
+      '@pixi/core': 7.4.2
+      '@pixi/display': 7.4.2
 
   '@pixi/extensions@7.4.2':
     resolution: {integrity: sha512-Hmx2+O0yZ8XIvgomHM9GZEGcy9S9Dd8flmtOK5Aa3fXs/8v7xD08+ANQpN9ZqWU2Xs+C6UBlpqlt2BWALvKKKA==}
@@ -2085,6 +2094,11 @@ snapshots:
   '@pixi/display@7.4.2(@pixi/core@7.4.2)':
     dependencies:
       '@pixi/core': 7.4.2
+
+  '@pixi/events@7.4.2(@pixi/core@7.4.2)(@pixi/display@7.4.2(@pixi/core@7.4.2))':
+    dependencies:
+      '@pixi/core': 7.4.2
+      '@pixi/display': 7.4.2(@pixi/core@7.4.2)
 
   '@pixi/extensions@7.4.2': {}
 
