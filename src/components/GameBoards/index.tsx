@@ -4,14 +4,34 @@ import { Container } from '@pixi/display';
 import { Sprite } from '@pixi/sprite';
 import { TextStyle } from '@pixi/text';
 import createPixiButton from './createPixiButton';
+import { calculateCardPositions } from './calculateCardPositions';
+import createCard from './createCard';
 
 const GameBoard: React.FC = () => {
   const pixiContainerRef = useRef<HTMLDivElement>(null);
 
+  const handleButtonClick = (app: Application) => {
+    if (app) {
+      const cardPositions = calculateCardPositions(512, 512, 300, 7);
+      cardPositions.forEach(pos => {
+        createCard({
+          app,
+          x: pos.x,
+          y: pos.y,
+          image: '/pure-cards-preview.png',
+          rotation: pos.rotation,
+        });
+      });
+    }
+  };
+
   useEffect(() => {
+    const width = 1024;
+    const height = 1024;
+
     const app = new Application({
-      width: 1024,
-      height: 1024,
+      width,
+      height,
     });
 
     if (pixiContainerRef.current) {
@@ -27,8 +47,8 @@ const GameBoard: React.FC = () => {
     container.addChild(sprite);
 
     const btn1 = createPixiButton({
-      x: 300,
-      y: 650,
+      x: width / 2 - 150,
+      y: height / 2,
       text: 'Join the game',
       style: new TextStyle({
         fontFamily: 'Arial',
@@ -36,13 +56,14 @@ const GameBoard: React.FC = () => {
         fill: ['#ffffff'],
       }),
       onClick: () => {
-        console.log('Join the game clicked');
+        handleButtonClick(app);
       },
+      buttonImage: '/blue.png',
     });
 
     const btn2 = createPixiButton({
-      x: 500,
-      y: 650,
+      x: width / 2 + 150,
+      y: height / 2,
       text: 'Open the chest',
       style: new TextStyle({
         fontFamily: 'Arial',
@@ -52,6 +73,7 @@ const GameBoard: React.FC = () => {
       onClick: () => {
         console.log('Open the chest clicked');
       },
+      buttonImage: '/gray.png',
     });
 
     app.stage.addChild(btn1);
