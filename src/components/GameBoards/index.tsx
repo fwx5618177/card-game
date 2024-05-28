@@ -7,8 +7,15 @@ import createPixiButton from './createPixiButton';
 import { calculateCardPositions } from './calculateCardPositions';
 import createCard from './createCard';
 
+// import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import createLeaderboard from './createLeaderboard';
+
 const GameBoard: React.FC = () => {
   const pixiContainerRef = useRef<HTMLDivElement>(null);
+
+  //   const { address, isConnected } = useAccount();
+  //   const { connect } = useConnect();
+  //   const { disconnect } = useDisconnect();
 
   const handleButtonClick = (app: Application) => {
     if (app) {
@@ -23,6 +30,15 @@ const GameBoard: React.FC = () => {
         });
       });
     }
+  };
+
+  const handleShowLeaderboardClick = (app: Application) => {
+    createLeaderboard(app);
+    // if (isConnected) {
+    // }
+    // else {
+    //   connect({});
+    // }
   };
 
   useEffect(() => {
@@ -57,6 +73,8 @@ const GameBoard: React.FC = () => {
       }),
       onClick: () => {
         handleButtonClick(app);
+        app.stage.removeChild(btn1);
+        app.stage.removeChild(btn2);
       },
       buttonImage: '/blue.png',
     });
@@ -71,7 +89,10 @@ const GameBoard: React.FC = () => {
         fill: ['#ffffff'],
       }),
       onClick: () => {
-        console.log('Open the chest clicked');
+        handleShowLeaderboardClick(app);
+
+        app.stage.removeChild(btn1);
+        app.stage.removeChild(btn2);
       },
       buttonImage: '/gray.png',
     });
