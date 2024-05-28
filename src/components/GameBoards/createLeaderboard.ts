@@ -13,10 +13,9 @@ const leaderboardData: LeaderboardEntry[] = [
   { rank: 1, name: 'Player1', score: 1000 },
   { rank: 2, name: 'Player2', score: 900 },
   { rank: 3, name: 'Player3', score: 800 },
-  // 添加更多数据...
 ];
 
-const createLeaderboard = (app: Application) => {
+const createLeaderboard = (app: Application, x: number, y: number) => {
   const leaderboard = new Container();
   const background = new Graphics();
 
@@ -38,8 +37,8 @@ const createLeaderboard = (app: Application) => {
   });
 
   const title = new Text('Leaderboard', titleStyle);
-  title.x = 400;
-  title.y = 120;
+  title.x = x;
+  title.y = y;
   title.anchor.set(0.5);
   leaderboard.addChild(title);
 

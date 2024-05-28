@@ -33,7 +33,7 @@ const GameBoard: React.FC = () => {
   };
 
   const handleShowLeaderboardClick = (app: Application) => {
-    createLeaderboard(app);
+    createLeaderboard(app, 300, 150);
     // if (isConnected) {
     // }
     // else {
