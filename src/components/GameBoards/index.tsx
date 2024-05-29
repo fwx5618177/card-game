@@ -17,7 +17,7 @@ const GameBoard: React.FC = () => {
   let walletAddress: string | null = null;
   let walletBalance: string | null = null;
   let isConnected = false;
-  let players = 6;
+  let players = 0;
   const results: { playerId: number; result: 'YES' | 'NO' }[] = [];
 
   const handleMintNFT = async (app: Application) => {
@@ -25,11 +25,15 @@ const GameBoard: React.FC = () => {
     const success = await mintNFT();
     if (success) {
       players++;
-      if (players <= 7) handleButtonClick(app, players);
+      if (players <= 7) {
+        if (window.location.href.includes('localhost'))
+          handleButtonClick(app, 7);
+        else handleButtonClick(app, players);
+      }
     }
   };
 
-  const handleButtonClick = (app: Application, player = 1) => {
+  const handleButtonClick = (app: Application, player = 7) => {
     if (app) {
       const cardPositions = calculateCardPositions(512, 512, 300, player);
       cardPositions.forEach((pos, index) => {
