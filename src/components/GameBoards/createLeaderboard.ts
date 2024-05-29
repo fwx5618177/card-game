@@ -15,7 +15,12 @@ const leaderboardData: LeaderboardEntry[] = [
   { rank: 3, name: 'Player3', score: 800 },
 ];
 
-const createLeaderboard = (app: Application, x: number, y: number) => {
+const createLeaderboard = (
+  app: Application,
+  x: number,
+  y: number,
+  data = leaderboardData,
+) => {
   const leaderboard = new Container();
   const background = new Graphics();
 
@@ -42,7 +47,7 @@ const createLeaderboard = (app: Application, x: number, y: number) => {
   title.anchor.set(0.5);
   leaderboard.addChild(title);
 
-  leaderboardData.forEach((entry, index) => {
+  data.forEach((entry, index) => {
     const entryText = new Text(
       `${entry.rank}. ${entry.name} - ${entry.score}`,
       entryStyle,
